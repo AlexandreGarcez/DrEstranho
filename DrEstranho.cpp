@@ -9,9 +9,13 @@ DrEstranho::DrEstranho(){
 	this->idade = 30;
 	this->mana = 500;
 	this->nome = "Titi";
+	this->itens = new Item[0];
+	this->nItens = 0;
+
+	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
-DrEstranho::DrEstranho(int idade, int mana, string nome){
+DrEstranho::DrEstranho(int idade, int mana, const string &nome){
 	if(idade > 0)
 		this->idade = idade;
 	else
@@ -24,7 +28,11 @@ DrEstranho::DrEstranho(int idade, int mana, string nome){
 		this->nome = nome;
 	else
 		this->nome = "Stephen Vicent Strange";
-	
+
+	this->nItens = 0;
+
+	this->itens = new Item[nItens];
+
 	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
@@ -32,6 +40,10 @@ DrEstranho::DrEstranho(const DrEstranho &d){
 	this->idade = d.idade;
 	this->mana = d.mana;
 	this->nome = d.nome;
+	this->itens = d.itens;
+	this->nItens = d.nItens;
+
+	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
 void DrEstranho::barganhar(){
@@ -73,7 +85,7 @@ void DrEstranho::setMana(int mana){
 		return;
 }
 
-void DrEstranho::setNome(string nome){
+void DrEstranho::setNome(const string &nome){
 	if(nome.length() < 100 && nome.length() > 1)
 		this-> nome = nome;
 	else
@@ -92,5 +104,30 @@ int DrEstranho::getMana(){
 string DrEstranho::getNome(){
 	return this->nome;
 }
+
+Item *DrEstranho::getItens() {
+	return this->itens;
+}
+
+void DrEstranho::adicionarItem(const Item &item) {
+	Item* aux = new Item[this->nItens];
+
+	for (int i = 0; i < this->nItens; ++i) {
+		aux[i] = this->itens[i];
+	}
+
+	delete [] this->itens;
+
+	itens = new Item[++this->nItens];
+
+	for (int i = 0; i < this->nItens-1; ++i) {
+		this->itens[i] = aux[i];
+	}
+
+	this->itens[this->nItens - 1] = item;
+
+	delete [] aux;
+}
+
 
 

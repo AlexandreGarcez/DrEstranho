@@ -1,25 +1,29 @@
 #include <iostream>
 #include <string>
+#include "Item.h"
 
 using namespace std;
 
-class DrEstranho // Nome da Classe
+class DrEstranho
 {
 public:
 	static int nDr;
 	DrEstranho();
-	DrEstranho(int, int, string);
-	DrEstranho(const DrEstranho&);
-	void barganhar(); // Nome do método
+	DrEstranho(int, int, const string &);
+	DrEstranho(const DrEstranho &);
+	void barganhar();
+	void adicionarItem(const Item &);
 	int getMana();
 	int getIdade();
 	string getNome();
+	Item* getItens();
 	void setIdade(int);
 	void setMana(int);
-	void setNome(string);
+	void setNome(const string &);
 private:
+	int nItens;
 	int mana;
 	string nome;
 	int idade;
-	
+	Item* itens;
 };
