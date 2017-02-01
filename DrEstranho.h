@@ -12,6 +12,7 @@ public:
 	DrEstranho(int, int, const string &);
 	DrEstranho(const DrEstranho &);
 	void barganhar();
+	void usarHabilidade();
 	void adicionarItem(const Item &);
 	int getMana();
 	int getIdade();

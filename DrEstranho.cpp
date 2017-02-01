@@ -70,6 +70,15 @@ void DrEstranho::barganhar(){
 		}while(opcao != 1);
 		
 	}
+
+void DrEstranho::usarHabilidade(){
+	int opcao;
+	do{
+		cout << "\n\n Escolha a magia:";
+		
+		cin>> opcao
+	}
+}
 	
 void DrEstranho::setIdade(int idade){
 	if(idade > 0)
