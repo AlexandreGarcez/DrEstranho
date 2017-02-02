@@ -33,15 +33,27 @@ int Item::getForca() {
     return this->forca;
 }
 
+ostream &operator<<(ostream &output, const Item &numero){
+	
+	output << "O numero do item é " << numero.id;
+	
+	return output;
+}
 
-
-
-
-
-
-
-
-
-
-
+bool Item::operator==(const Item &Item1 ) const
+{
+	
+	if ( this->forca != Item1.forca )
+	return false;
+	
+	if ( this->durabilidade != Item1.durabilidade )
+	return false;
+	
+	if ( this->nome != Item1.nome )
+	return false;
+	
+	if ( this->id != Item1.id )
+	return false;
+	return true;
+}
 

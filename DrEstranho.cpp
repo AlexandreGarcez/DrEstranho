@@ -5,6 +5,7 @@ using namespace std;
 
 int DrEstranho::nDr = 0;
 
+
 DrEstranho::DrEstranho(){
 	this->idade = 30;
 	this->mana = 500;
@@ -76,8 +77,8 @@ void DrEstranho::usarHabilidade(){
 	do{
 		cout << "\n\n Escolha a magia:";
 		
-		cin>> opcao
-	}
+		cin>> opcao;
+	}while(opcao != 00);
 }
 	
 void DrEstranho::setIdade(int idade){
@@ -138,5 +139,25 @@ void DrEstranho::adicionarItem(const Item &item) {
 	delete [] aux;
 }
 
-
-
+ostream &operator<<(ostream &output, const DrEstranho &manainicial){
+	
+	output << "Seu mana inicial é" << manainicial.mana;
+	
+	return output;
+}
+bool DrEstranho::operator==(const DrEstranho &dr1 ) const
+{
+	
+	if ( this->nItens != dr1.nItens )
+	return false;
+	
+	if ( this->mana != dr1.mana )
+	return false;
+	
+	if ( this->nome != dr1.nome )
+	return false;
+	
+	if ( this->idade != dr1.idade )
+	return false;
+	return true;
+}

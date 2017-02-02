@@ -6,7 +6,9 @@ using namespace std;
 
 class DrEstranho
 {
+	friend ostream& operator<<(ostream &, const DrEstranho &);
 public:
+	bool operator==(const DrEstranho & ) const;
 	static int nDr;
 	DrEstranho();
 	DrEstranho(int, int, const string &);
