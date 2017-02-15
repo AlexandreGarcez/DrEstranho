@@ -1,12 +1,13 @@
 #include "DrEstranho.h"
 #include <iostream>
+#include "Data.h"
 
 using namespace std;
 
 int DrEstranho::nDr = 0;
 
 
-DrEstranho::DrEstranho(){
+DrEstranho::DrEstranho():dataAtual(19, 9, 1987){
 	this->idade = 30;
 	this->mana = 500;
 	this->nome = "Titi";
@@ -16,7 +17,7 @@ DrEstranho::DrEstranho(){
 	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
-DrEstranho::DrEstranho(int idade, int mana, const string &nome){
+DrEstranho::DrEstranho(int idade, int mana, const string &nome):dataAtual(19, 9, 1987){
 	if(idade > 0)
 		this->idade = idade;
 	else
@@ -37,14 +38,29 @@ DrEstranho::DrEstranho(int idade, int mana, const string &nome){
 	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
-DrEstranho::DrEstranho(const DrEstranho &d){
+DrEstranho::DrEstranho(const DrEstranho &d):dataAtual(19, 9, 1987){
 	this->idade = d.idade;
 	this->mana = d.mana;
 	this->nome = d.nome;
 	this->itens = d.itens;
 	this->nItens = d.nItens;
-
+	
 	DrEstranho::nDr = DrEstranho::nDr + 1;
+}
+
+DrEstranho::~DrEstranho(){
+	this->idade = 0;
+	this->mana = 0;
+	this->nItens = 0;
+	
+	delete this->itens;
+	
+	string* ptr = &nome;
+	delete ptr;
+	
+	
+	Data* ptr2 = &dataAtual;
+	delete ptr2;
 }
 
 void DrEstranho::barganhar(){
@@ -75,10 +91,29 @@ void DrEstranho::barganhar(){
 void DrEstranho::usarHabilidade(){
 	int opcao;
 	do{
-		cout << "\n\n Escolha a magia:";
-		
+		cout << "\n\n Escolha a magia: \n 1 - Telepatia \n 2 - Telecinese \n 3 - Hipnose \n 4 - Banimento \n 5 - Sair";
 		cin>> opcao;
-	}while(opcao != 00);
+		
+		switch(opcao){
+		case 1:
+			cout << "\n Usou telepatia.";
+			break;
+		case 2:
+			cout << "\n Usou telecinese";
+			break;
+		case 3:
+			cout << "\n Usou hipnose.";
+			break;
+		case 4: 
+			cout << "\n Usou banimento.";
+			break;
+		case 5:
+			break;
+		default:
+			cout << "\n Insira uma opcao valida.";
+		}
+					
+	}while(opcao != 5);
 }
 	
 void DrEstranho::setIdade(int idade){
@@ -119,6 +154,28 @@ Item *DrEstranho::getItens() {
 	return this->itens;
 }
 
+void DrEstranho::removerItem(int opcao){
+	Item* aux = new Item[(this->nItens -1)];
+	int j = 0;
+	
+	for (int i = 0; i < this->nItens; ++i) {
+		if (i != opcao){
+			aux[j] = this->itens[i];
+			j++;
+		}
+	}
+	
+	delete [] this->itens;
+	
+	itens = new Item[--this->nItens];
+	
+	for (int i = 0; i < this->nItens-1; ++i) {
+		this->itens[i] = aux[i];
+	}
+	
+	delete [] aux;
+}
+
 void DrEstranho::adicionarItem(const Item &item) {
 	Item* aux = new Item[this->nItens];
 
@@ -139,6 +196,10 @@ void DrEstranho::adicionarItem(const Item &item) {
 	delete [] aux;
 }
 
+void DrEstranho::mostrarDia() const{
+    cout << "O dia atual e: ";
+    dataAtual.imprimir();
+}
 ostream &operator<<(ostream &output, const DrEstranho &manainicial){
 	
 	output << "Seu mana inicial é" << manainicial.mana;
@@ -147,7 +208,6 @@ ostream &operator<<(ostream &output, const DrEstranho &manainicial){
 }
 bool DrEstranho::operator==(const DrEstranho &dr1 ) const
 {
-	
 	if ( this->nItens != dr1.nItens )
 	return false;
 	
@@ -160,4 +220,18 @@ bool DrEstranho::operator==(const DrEstranho &dr1 ) const
 	if ( this->idade != dr1.idade )
 	return false;
 	return true;
+}
+
+bool DrEstranho::operator!=( const DrEstranho &dr1 ) const
+{
+	return ! ( *this == dr1);
+}
+
+const int DrEstranho::Dimensoes= 3;
+
+int DrEstranho::NumeroDimensoes= DrEstranho::Dimensoes;
+
+void DrEstranho::DimensaoAtual(){
+	cout << "Sua dimensao atual e : " << NumeroDimensoes; 
+	
 }

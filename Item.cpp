@@ -1,5 +1,5 @@
 #include "Item.h"
-
+#include <iostream>
 Item::Item() {
     this->forca = 0;
     this->nome = "Sem nome";
@@ -33,6 +33,21 @@ int Item::getForca() {
     return this->forca;
 }
 
+ void Item::operator=(const Item &Item1){
+ 
+ this->nome = Item1.nome;
+ this->forca = Item1.forca;
+ this->durabilidade = Item1.durabilidade;
+ this->id = Item1.id;
+ 
+ delete [] itens;
+    itens = new string[this->numeroItens];
+    
+    for (int i=0;i<numeroItens;i++){
+        this->itens[i] = Item1.itens[i];
+ 
+ }
+}
 ostream &operator<<(ostream &output, const Item &numero){
 	
 	output << "O numero do item é " << numero.id;
@@ -40,7 +55,7 @@ ostream &operator<<(ostream &output, const Item &numero){
 	return output;
 }
 
-bool Item::operator==(const Item &Item1 ) const
+bool Item::operator==(	const Item &Item1 ) const
 {
 	
 	if ( this->forca != Item1.forca )
@@ -57,3 +72,7 @@ bool Item::operator==(const Item &Item1 ) const
 	return true;
 }
 
+bool Item::operator!=( const Item &Item1 ) const
+{
+	return ! ( *this == Item1);
+}
