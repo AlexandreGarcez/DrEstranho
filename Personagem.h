@@ -1,3 +1,6 @@
+#ifndef PERSONAGEM_H
+#define PERSONAGEM_H
+
 #include <iostream>
 #include <string>
 #include "Item.h"
@@ -13,17 +16,18 @@ public:
 	bool operator!=( const Personagem & ) const;
 	void operator=(const Personagem &);
 	Presonagem();
-	Personagem(int, int, const string &);
+	Personagem(int, const string &);
+	Personagem(const Personagem &);
 	void adicionarItem(const Item &);
+	void removerItem(int);
 	void mostrarDia() const;
 	int getIdade();
 	string getNome();
 	Item* getItens();
 	void setIdade(int);
 	void setNome(const string &);
-	void removerItem(int);
 	
-private:
+protected:
 	
 	int nItens;
 	string nome;
@@ -33,3 +37,4 @@ private:
 	
 };
 
+#endif	

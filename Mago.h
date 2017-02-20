@@ -1,7 +1,9 @@
+#ifndef MAGO_H
+#define MAGO_H
+
 #include <iostream>
 #include <string>
-#include "Item.h"
-#include "Data.h"
+#include "Personagem.h"
 using namespace std;
 
 
@@ -10,6 +12,8 @@ class Mago : public Personagem {
 friend ostream& operator<<(ostream &, const Mago &);
 
 public:
+	Mago();
+	Mago( int, int, const string & );
 	bool operator==( const Mago & ) const;
 	bool operator!=( const Mago & ) const;
 	void operator=(const Mago &);
@@ -17,7 +21,8 @@ public:
 	int getMana();	
 	void setMana(int);
 	~Mago();
-private:	
+protected:	
 	int mana;
-}
+};
 
+#endif	

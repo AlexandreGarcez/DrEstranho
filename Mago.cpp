@@ -1,25 +1,14 @@
 #include "DrEstranho.h"
 #include <iostream>
 #include "Data.h"
-
+#include "Personagem.h"
 using namespace std;
 
 
 
 
-Mago::Mago(int idade, int mana, const string &nome){
-	if(idade > 0)
-		this->idade = idade;
-	else
-		this->idade = 30;
-	if(mana >0)
-		this->mana = mana;
-	else
-		this->mana = 500;	
-	if(nome.length() < 100 && nome.length() > 1)
-		this->nome = nome;
-	else
-		this->nome = "Stephen Vicent Strange";
+Mago::Mago(int idade, int mana, const string &nome): Personagem(idade, nome) {
+	this->mana = mana;
 
 }
 
@@ -88,7 +77,7 @@ bool Mago::operator==(const Mago &mago2 ) const
 
 	if ( this->mana != mago2.mana )
 	return false;
-	static_cast<Personagem&> (*this) = static_cast <Personagem>(mago2);
+	static_cast<Personagem&> (*this) == static_cast <Personagem>(mago2);
 	return true;
 }
 
@@ -96,7 +85,6 @@ bool Mago::operator!=( const Mago &mago2 ) const
 {
 	return ! ( *this == mago2);
 	
-	static_cast<Personagem&> (*this) = static_cast <Personagem>(mago2);
 }
 
 void Mago::operator=(const Mago &mago2){

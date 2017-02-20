@@ -161,7 +161,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=..\Guerreiro.cpp
+FileName=..\Guerreiro.h
 CompileCpp=1
 Folder=
 Compile=1

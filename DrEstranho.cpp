@@ -1,40 +1,18 @@
 #include "DrEstranho.h"
 #include <iostream>
 #include "Data.h"
+#include "Mago.h"
 
 using namespace std;
 
 int DrEstranho::nDr = 0;
 
 
-DrEstranho::DrEstranho():dataAtual(19, 9, 1987), Personagem(int idade, const string &nome){
-	this->idade = 30;
-	this->mana = 500;
-	this->nome = "Titi";
-	this->itens = new Item[0];
-	this->nItens = 0;
-
+DrEstranho::DrEstranho() : Mago(33, 500, "Stephen Vicent Strange"){
 	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
-DrEstranho::DrEstranho(int idade, int mana, const string &nome):dataAtual(19, 9, 1987){
-	if(idade > 0)
-		this->idade = idade;
-	else
-		this->idade = 30;
-	if(mana >0)
-		this->mana = mana;
-	else
-		this->mana = 500;	
-	if(nome.length() < 100 && nome.length() > 1)
-		this->nome = nome;
-	else
-		this->nome = "Stephen Vicent Strange";
-
-	this->nItens = 0;
-
-	this->itens = new Item[nItens];
-
+DrEstranho::DrEstranho(int idade, int mana, const string &nome): Mago(idade, nama, nome){
 	DrEstranho::nDr = DrEstranho::nDr + 1;
 }
 
@@ -116,21 +94,6 @@ void DrEstranho::usarMagia(){
 	}while(opcao != 5);
 }
 	
-
-void DrEstranho::setMana(int mana){
-	if(mana > 0)
-		this->mana = mana;
-	else
-		return;
-}
-
-
-
-int DrEstranho::getMana(){
-	return this->mana;
-}
-
-
 
 
 

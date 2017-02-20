@@ -1,3 +1,6 @@
+#ifndef ITEM_H
+#define ITEM_H
+
 #include <string>
 
 using namespace std;
@@ -9,6 +12,7 @@ class Item
 public:
 	bool operator==( const Item & ) const;
 	bool operator!=( const Item & ) const;
+	void operator=(const Item &);
     Item();
     Item(int, const string &);
     void encantar();
@@ -18,7 +22,6 @@ public:
     int getForca();
     int getDurabilidade();
     int getId();
-	void operator=(const Item &);
 private:
     string nome;
     int forca;
@@ -27,3 +30,5 @@ private:
     int numeroItens;
     string *itens;
 };
+
+#endif	

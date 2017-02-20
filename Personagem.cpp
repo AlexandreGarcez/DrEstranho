@@ -1,10 +1,14 @@
-#include "DrEstranho.h"
+#include "Personagem.h"
 #include <iostream>
 #include "Data.h"
 
 using namespace std;
 
 
+Personagem::Personagem():dataAtual(19,9,1987){
+	this->idade=33;
+	this->
+}
 
 Personagem::Personagem(int idade, const string &nome):dataAtual(19, 9, 1987){
 	if(idade > 0)
