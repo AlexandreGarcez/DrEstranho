@@ -1,11 +1,7 @@
-// Dr. Strange
 #include <iostream>
-#include "DrEstranho.cpp"
+#include "DrEstranho.h"
 
-using namespace std; // Estrutura do C++ que evita ter que colocar std:: antes do cout, cin , etc.
-
-
-
+using namespace std;
 
 int main(){
 	

@@ -1,25 +1,39 @@
 #include <iostream>
 #include <string>
-
+#include "Item.h"
+#include "Data.h"
 using namespace std;
 
-class DrEstranho // Nome da Classe
-{
+
+
+class Guerreiro : Personagem {
+
 public:
+	void usarArma();
+	int getFuria();
+	void setFuria();
+private:
+	int furia;
+};
+
+class DrEstranho : public Mago
+{
+	friend ostream& operator<<(ostream &, const DrEstranho &);
+public:
+	bool operator==( const DrEstranho & ) const;
+	bool operator!=( const DrEstranho & ) const;
 	static int nDr;
 	DrEstranho();
-	DrEstranho(int, int, string);
-	DrEstranho(const DrEstranho&);
-	void barganhar(); // Nome do método
-	int getMana();
-	int getIdade();
-	string getNome();
-	void setIdade(int);
-	void setMana(int);
-	void setNome(string);
+	DrEstranho(int, int, const string &);
+	DrEstranho(const DrEstranho &);
+	~DrEstranho();
+	void barganhar();
+	static void DimensaoAtual();
+	
+
 private:
-	int mana;
-	string nome;
-	int idade;
+	
+	static const int Dimensoes;
+	static int NumeroDimensoes;
 	
 };
