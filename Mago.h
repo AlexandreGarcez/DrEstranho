@@ -12,6 +12,7 @@ friend ostream& operator<<(ostream &, const Mago &);
 public:
 	bool operator==( const Mago & ) const;
 	bool operator!=( const Mago & ) const;
+	void operator=(const Mago &);
 	void usarMagia();
 	int getMana();	
 	void setMana(int);

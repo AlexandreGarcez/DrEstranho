@@ -7,7 +7,7 @@ using namespace std;
 int DrEstranho::nDr = 0;
 
 
-DrEstranho::DrEstranho():dataAtual(19, 9, 1987){
+DrEstranho::DrEstranho():dataAtual(19, 9, 1987), Personagem(int idade, const string &nome){
 	this->idade = 30;
 	this->mana = 500;
 	this->nome = "Titi";
@@ -138,9 +138,12 @@ void DrEstranho::mostrarDia() const{
     cout << "O dia atual e: ";
     dataAtual.imprimir();
 }
-ostream &operator<<(ostream &output, const DrEstranho &manainicial){
+ostream &operator<<(ostream &output, const DrEstranho &dr1){
 	
-	output << "Seu mana inicial é" << manainicial.mana;
+	output << static_cast <Mago> (dr1); 
+	
+	output << "Dimensao atual: " << dr1.Dimensoes;
+		
 	
 	return output;
 }
@@ -157,13 +160,28 @@ bool DrEstranho::operator==(const DrEstranho &dr1 ) const
 	
 	if ( this->idade != dr1.idade )
 	return false;
+	
+	if (static_cast<Mago&> (*this) != static_cast <Mago>(dr1)
+	return false;
+	
+	
 	return true;
+	
+	
 }
 
 bool DrEstranho::operator!=( const DrEstranho &dr1 ) const
 {
 	return ! ( *this == dr1);
+	static_cast<Mago&> (*this) != static_cast <Mago>(dr1);
 }
+
+void DrEstranho::operator=(const DrEstranho &dr1){
+	static_cast<Mago&> (*this) = static_cast <Mago>(dr1);
+    this->Dimensoes = dr1.Dimensoes;
+}
+
+
 
 const int DrEstranho::Dimensoes= 3;
 
@@ -173,3 +191,4 @@ void DrEstranho::DimensaoAtual(){
 	cout << "Sua dimensao atual e : " << NumeroDimensoes; 
 	
 }
+

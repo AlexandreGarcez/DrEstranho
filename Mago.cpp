@@ -88,11 +88,22 @@ bool Mago::operator==(const Mago &mago2 ) const
 
 	if ( this->mana != mago2.mana )
 	return false;
-
+	static_cast<Personagem&> (*this) = static_cast <Personagem>(mago2);
 	return true;
 }
 
 bool Mago::operator!=( const Mago &mago2 ) const
 {
 	return ! ( *this == mago2);
+	
+	static_cast<Personagem&> (*this) = static_cast <Personagem>(mago2);
+}
+
+void Mago::operator=(const Mago &mago2){
+	
+	
+    this->mana = mago2.mana;
+
+    
+	static_cast<Personagem&> (*this) = static_cast <Personagem>(mago2);
 }

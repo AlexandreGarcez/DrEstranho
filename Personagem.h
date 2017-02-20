@@ -11,8 +11,9 @@ class Personagem {
 public:
 	bool operator==( const Personagem & ) const;
 	bool operator!=( const Personagem & ) const;
+	void operator=(const Personagem &);
 	Presonagem();
-	Personagem
+	Personagem(int, int, const string &);
 	void adicionarItem(const Item &);
 	void mostrarDia() const;
 	int getIdade();

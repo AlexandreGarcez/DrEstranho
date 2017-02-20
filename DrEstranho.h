@@ -5,19 +5,8 @@
 using namespace std;
 
 
-
-class Guerreiro : Personagem {
-
-public:
-	void usarArma();
-	int getFuria();
-	void setFuria();
-private:
-	int furia;
-};
-
-class DrEstranho : public Mago
-{
+class DrEstranho : public Mago{
+	
 	friend ostream& operator<<(ostream &, const DrEstranho &);
 public:
 	bool operator==( const DrEstranho & ) const;
